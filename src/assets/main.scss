@@ -1,0 +1,23 @@
+@import './fonts.scss';
+@import './base.scss';
+@import './rwd.scss';
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap';
+
+.w-sm-auto {
+  @media (min-width: 576px) {
+    width: auto !important;
+  }
+}
+
+.w-sm-75 {
+  @media (min-width: 576px) {
+    width: 75% !important;
+  }
+}
+
+.w-md-50 {
+  @media (min-width: 768px) {
+    width: 50% !important;
+  }
+}
