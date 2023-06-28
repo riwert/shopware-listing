@@ -114,6 +114,7 @@ watch(debouncedSearchQuery, handleSearch)
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-start g-4">
         <div v-if="isLoading" class="col mx-auto text-center"><h2>Wczytywanie...</h2></div>
+        <div v-else-if="!productList?.length" class="col mx-auto text-center"><h2>Nic nie znaleziono.</h2></div>
         <div v-for="product in productList" :key="product.id" class="col">
           <ShopwareProduct :product="product" />
         </div>
