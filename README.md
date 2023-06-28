@@ -5,6 +5,9 @@ Vue.js v3 + Bootstrap v5 as a client starter for a Shopware API
 ## Sceenshot & demo app link
 [!['shopware-listing sceenshot example'](screenshot.png)](https://shopware-listing.netlify.app 'See demo app')
 
+## ENV config
+Set new .env file based on [.env.example](.env.example)
+
 ## Vue.js
 This template should help get you started developing with Vue 3 in Vite.
 
