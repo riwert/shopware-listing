@@ -1,6 +1,6 @@
 # shopware-listing
 
-Vue.js v3 + Bootstrap v5 as a client starter for a Shopware API
+Vue.js v3 + Bootstrap v5 as a PWA client starter for a Shopware API
 
 ## Sceenshot & demo app link
 [!['shopware-listing sceenshot example'](screenshot.png)](https://shopware-listing.netlify.app 'See demo app')
