@@ -1,8 +1,11 @@
 # shopware-listing
 
-## Vue.js v3 + Boostrap v5 + Shopware API
+Vue.js v3 + Bootstrap v5 as a client starter for a Shopware API
 
+## Sceenshot & demo app link
+[!['shopware-listing sceenshot example'](screenshot.png)](https://shopware-listing.netlify.app 'See demo app')
 
+## Vue.js
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
