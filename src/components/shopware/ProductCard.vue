@@ -1,5 +1,5 @@
 <script setup>
-import usePriceFormatter from '../composables/usePriceFormatter'
+import usePriceFormatter from '../../composables/usePriceFormatter'
 
 const props = defineProps({
   product: Object

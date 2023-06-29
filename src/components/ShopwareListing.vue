@@ -1,9 +1,10 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useFetch, useDebounce } from '@vueuse/core'
-import IconSort from './icons/IconSort.vue'
-import IconSearch from './icons/IconSearch.vue'
-import ShopwareProduct from './ShopwareProduct.vue'
+
+import ShopwareHeader from './shopware/Header.vue'
+import ShopwareSearcher from './shopware/Searcher.vue'
+import ShopwareProductList from './shopware/ProductList.vue'
 
 const apiUrl = import.meta.env.VITE_API_URL
 const apiKey = import.meta.env.VITE_API_KEY
@@ -74,7 +75,8 @@ const productListing = async () => {
 
 productListing()
 
-const handleSort = () => {
+const handleSort = (value) => {
+  sortOrder.value = value
   localStorage.setItem('sortOrder', sortOrder.value)
   productListing()
 }
@@ -89,40 +91,11 @@ watch(debouncedSearchQuery, handleSearch)
 </script>
 
 <template>
-  <header class="py-3 bg-dark shadow">
-    <div class="container d-flex flex-wrap justify-content-center justify-content-sm-between align-items-center">
 
-      <h1 class="h3 mb-3 mb-sm-0 text-white text-center text-sm-start w-100 w-sm-auto">Shopware Listing</h1>
+  <ShopwareHeader :sort-order="sortOrder" @change="handleSort" />
 
-      <div class="input-group w-auto">
-        <label for="sorter" class="input-group-text"><IconSort aria-label="Sort icon - horizontal ellipsis in circle" /></label>
-        <select v-model="sortOrder" @change="handleSort" id="sorter" class="form-select" title="Sortuj">
-          <option value="price-asc">najtańsze</option>
-          <option value="price-desc">najdrosze</option>
-        </select>
-      </div>
+  <ShopwareSearcher v-model:search-query="searchQuery" />
 
-    </div>
-  </header>
+  <ShopwareProductList :is-loading="isLoading" :product-list="productList" />
 
-  <div class="container text-center py-5 my-sm-5">
-    <div class="input-group w-md-50 mx-sm-auto">
-      <input type="text" v-model="searchQuery" id="searcher" class="form-control" placeholder="Szukaj...">
-      <label for="searcher" class="input-group-text"><IconSearch aria-label="Search icon - magnifying glass in circle" /></label>
-    </div>
-  </div>
-
-  <div class="bg-light py-5">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-start g-4">
-        <div v-if="isLoading" class="col mx-auto text-center"><h2>Wczytywanie...</h2></div>
-        <div v-else-if="!productList?.length" class="col mx-auto text-center"><h2>Nic nie znaleziono.</h2></div>
-        <div v-if="!isLoading" v-for="product in productList" :key="product.id" class="col">
-          <ShopwareProduct :product="product" />
-        </div>
-      </div>
-
-    </div>
-  </div>
 </template>
